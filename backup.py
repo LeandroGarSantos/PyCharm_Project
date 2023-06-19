@@ -104,24 +104,5 @@ def update(post_id):
     return redirect(url_for('home'))
 
 
-# BONUS ADD LiKE BUTTON
-@app.route('/like/<int:post_id>', methods=['POST'])
-def like(post_id):
-    # Find the blog post with the given id
-    for post in blog_posts:
-        if post['id'] == post_id:
-            # Increment the 'likes' value of the post
-            post['likes'] = post.get('likes', 0) + 1
-
-            # Save the updated blog posts to the JSON file
-            with open('blog_posts.json', 'w') as file:
-                json.dump(blog_posts, file)
-
-            break
-
-    # Redirect back to the home page
-    return redirect(url_for('home'))
-
-
 if __name__ == '__main__':
     app.run()

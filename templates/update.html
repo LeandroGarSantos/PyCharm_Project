@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Blog Post</title>
+    <style>
+        /* Add some basic styling for the form */
+        form {
+            margin-top: 20px;
+        }
+        form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        form input[type="text"], form textarea {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+        form button {
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Update Blog Post</h1>
+<!--    <form method="post" action="/update/{{ post.id }}">-->
+        <form action="{{ url_for('update', post_id=post.id) }}" method="POST">
+        <label for="author">Author:</label>
+        <input type="text" id="author" name="author" value="{{ post.author }}" required>
+
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" value="{{ post.title }}" required>
+
+        <label for="content">Content:</label>
+        <textarea id="content" name="content" required>{{ post.content }}</textarea>
+
+        <button type="submit">Update Post</button>
+    </form>
+</body>
+</html>
